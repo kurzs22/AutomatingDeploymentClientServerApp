@@ -1,7 +1,5 @@
 'use strict';
 
-require('dotenv').config()
-
 const items = [
   {
     id: 'FLOWERS-11',
@@ -13,15 +11,17 @@ const items = [
   },
 ];
 
+const env = process.env.NODE_ENV || 'development';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (env !== 'production') {
       return queryInterface.bulkInsert('Items', items, {});
     }
   },
 
   down: (queryInterface, Sequelize) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (env !== 'production') {
       return queryInterface.bulkDelete(
         'Items',
         {
