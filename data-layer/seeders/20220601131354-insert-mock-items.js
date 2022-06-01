@@ -20,7 +20,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     if (myenv !== 'production') {
       return queryInterface.bulkInsert('Items', items, {});
-    }
+    } else return null;
   },
 
   down: (queryInterface, Sequelize) => {
@@ -32,6 +32,6 @@ module.exports = {
         },
         {}
       );
-    }
+    } else return null;
   },
 };
