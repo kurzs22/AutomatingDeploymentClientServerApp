@@ -2,31 +2,29 @@
 
 const items = [
   {
-    id: 'FLOWERS-11',
-    name: 'Flowers',
+    id: 'MOCK-1',
+    name: 'Mocka',
   },
   {
-    id: 'BEES-8888',
-    name: 'Bees',
+    id: 'MOCK-2',
+    name: 'Cafe',
   },
 ];
 
-const env = process.env.NODE_ENV || 'development';
+const myenv = process.env.NODE_ENV || 'development';
 
-console.log('env:');
-console.log(env);
-console.log('config:');
-console.log(config);
+console.log('>>>> env: >>>>');
+console.log(myenv);
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    if (env !== 'production') {
+    if (myenv !== 'production') {
       return queryInterface.bulkInsert('Items', items, {});
     }
   },
 
   down: (queryInterface, Sequelize) => {
-    if (env !== 'production') {
+    if (myenv !== 'production') {
       return queryInterface.bulkDelete(
         'Items',
         {
