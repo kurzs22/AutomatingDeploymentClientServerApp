@@ -11,22 +11,20 @@ const items = [
   },
 ];
 
-const env = process.env.NODE_ENV || 'development';
+const myenv = process.env.NODE_ENV || 'development';
 
-console.log('env:');
-console.log(env);
-console.log('config:');
-console.log(config);
+console.log('>>>> env: >>>>>');
+console.log(myenv);
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    if (env !== 'production') {
+    if (myenv !== 'production') {
       return queryInterface.bulkInsert('Items', items, {});
     }
   },
 
   down: (queryInterface, Sequelize) => {
-    if (env !== 'production') {
+    if (myenv !== 'production') {
       return queryInterface.bulkDelete(
         'Items',
         {
